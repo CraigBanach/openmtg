@@ -1,0 +1,6 @@
+﻿namespace MTGEngine
+{
+    class Turn
+    {
+    }
+}
