@@ -6,6 +6,7 @@ namespace MTGEngine
     public class Game
     {
         private TurnOrder turnOrder;
+        private Turn currentTurn;
 
         public Game( Player player1, Player player2 )
         {
