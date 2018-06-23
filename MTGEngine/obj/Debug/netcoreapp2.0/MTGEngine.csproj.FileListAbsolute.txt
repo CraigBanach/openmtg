@@ -1,0 +1,8 @@
+E:\dev\MTGEngine\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.deps.json
+E:\dev\MTGEngine\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.runtimeconfig.json
+E:\dev\MTGEngine\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.runtimeconfig.dev.json
+E:\dev\MTGEngine\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.dll
+E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.csprojResolveAssemblyReference.cache
+E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.csproj.CoreCompileInputs.cache
+E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.AssemblyInfoInputs.cache
+E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.AssemblyInfo.cs

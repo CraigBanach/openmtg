@@ -6,5 +6,14 @@ namespace MTGEngine.Zones
     public class Battlefield
     {
         public ICollection<Card> Cards = new Collection<Card>();
+
+
+        public void Untap()
+        {
+            foreach (var card in this.Cards)
+            {
+                card.Untap();
+            }
+        }
     }
 }
