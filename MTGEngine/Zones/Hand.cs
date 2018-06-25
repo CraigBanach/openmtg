@@ -1,9 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 
 namespace MTGEngine
 {
-    public class Hand
+    public class Hand : Collection<Card>
     {
-        public IEnumerable<Card> Cards { get; set; }
+        public void AddCard(Card card)
+        {
+            this.Add( card );
+        }
+
+        public Card Play(Card card)
+        {
+            this.Remove( card );
+            return card;
+        }
     }
 }

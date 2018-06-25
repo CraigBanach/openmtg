@@ -13,6 +13,12 @@ namespace MTGEngine
             var player2 = new Player();
 
             this.currentGame = new Game(player1, player2);
+
+            while ( !this.currentGame.gameIsOver )
+            {
+                this.MoveToNextTurn();
+                this.BeginTurn();
+            }
         }
 
         private void MoveToNextTurn()

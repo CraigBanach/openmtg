@@ -8,5 +8,10 @@ namespace MTGEngine
             : base(cards)
         {
         }
+
+        public Card Draw()
+        {
+            return this.Pop();
+        }
     }
 }

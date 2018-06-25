@@ -9,6 +9,7 @@ namespace MTGEngine
         private IList<IPhase> Phases = new List<IPhase>();
         private IPhase currentPhase;
         private IState state;
+        private bool turnEnded = false;
 
         public Turn(Player player, IState state)
         {
@@ -28,6 +29,27 @@ namespace MTGEngine
         public void Begin()
         {
             this.currentPhase.Begin();
+            this.NextPhase();
+            if (this.turnEnded)
+            {
+                return;
+            } else
+            {
+                this.Begin();
+            }
+        }
+
+        public void NextPhase()
+        {
+            var currentPhaseNum = this.Phases.IndexOf( this.currentPhase );
+
+            if ( currentPhaseNum == this.Phases.Count )
+            {
+                this.turnEnded = true;
+            } else
+            {
+                this.currentPhase = this.Phases[ currentPhaseNum + 1 ];
+            }
         }
     }
 }

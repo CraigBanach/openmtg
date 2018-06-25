@@ -7,6 +7,7 @@ namespace MTGEngine
         private TurnOrder turnOrder;
         private Turn currentTurn;
         private IState state;
+        public bool gameIsOver = false;
 
         public Game( Player player1, Player player2 )
         {
