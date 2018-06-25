@@ -15,16 +15,13 @@ namespace MTGEngine
                 player1,
                 player2
             };
-
-            this.state = new State( players );
-
             this.turnOrder = new TurnOrder( players );
         }
 
         public void NextTurn()
         {
             var player = this.turnOrder.NextPlayer();
-            this.currentTurn = new Turn( player, this.state );
+            this.currentTurn = new Turn( player );
         }
         
         public void StartTurn()

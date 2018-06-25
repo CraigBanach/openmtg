@@ -16,9 +16,9 @@ namespace MTGEngine
         public Player NextPlayer()
         {
             var player = this.playerOrder[ this.listCounter ];
-            this.listCounter = this.listCounter > this.playerOrder.Count 
-                ? this.listCounter + 1 
-                : 0;
+            this.listCounter = this.listCounter >= this.playerOrder.Count - 1
+                ? 0
+                : this.listCounter + 1;
 
             return player;
         }

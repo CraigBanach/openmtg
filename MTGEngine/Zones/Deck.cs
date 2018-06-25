@@ -4,7 +4,7 @@ namespace MTGEngine
 {
     public class Deck : Stack<Card>
     {
-        public Deck(IList<Card> cards)
+        public Deck(IEnumerable<Card> cards)
             : base(cards)
         {
         }

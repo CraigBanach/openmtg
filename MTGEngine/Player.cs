@@ -11,16 +11,29 @@ namespace MTGEngine
         public Battlefield Battlefield { get; set; } = new Battlefield();
         public Deck Deck { get; set; }
         public Hand Hand { get; set; }
+        public Graveyard Graveyard { get; set; }
         private Random random = new Random();
-
+        public int HitPoints { get; private set; } = 20;
         private bool hasPlayedLand = false;
+        public IState state;
+        public string Name;
+
+        public Player(Deck deck, IState state, string Name)
+        {
+            this.Deck = deck;
+            this.Hand = new Hand();
+            this.Graveyard = new Graveyard();
+            this.DrawCards(7);
+            this.state = state;
+            this.Name = Name;
+        }
 
         public void Untap()
         {
             this.Battlefield.Untap();
         }
 
-        internal void DoMainPhaseActions()
+        public void DoMainPhaseActions()
         {
             if ( this.CanPlayLand() )
             {
@@ -35,11 +48,28 @@ namespace MTGEngine
             }
         }
 
+        public void Damage(int damage)
+        {
+            this.HitPoints -= damage;
+            Console.WriteLine($"{this.state.Me().Name} did { damage } to {this.Name}.");
+        }
+
         private void PlaySpell( Collection<Card> playableCards )
         {
             var rand = this.random.Next( playableCards.Count );
 
-            this.Battlefield.Play( this.Hand.Play( playableCards[ rand ] ) );
+            if (playableCards[rand].Type == CardType.Creature)
+            {
+                this.Battlefield.Play(this.Hand.Play(playableCards[rand]));
+            } else
+            {
+                this.Cast(this.Hand.Play(playableCards[rand]));
+            }
+        }
+
+        public void Cast(Card card)
+        {
+            card.Resolve(this.state);
         }
 
         private Collection<Card> PlayableSpells()
@@ -54,8 +84,7 @@ namespace MTGEngine
                 }
 
                 if ( this.Battlefield.Cards
-                    .Where(land => land.Type == CardType.Land)
-                    .Count(land => land.Type == CardType.Land) > card.ManaCost.Total() )
+                    .Count(land => land.Type == CardType.Land) >= card.ManaCost.Total() )
                 {
                     cards.Add( card );
                 }
@@ -73,7 +102,7 @@ namespace MTGEngine
         private void PlayLand()
         {
             var landToPlay = this.Hand.First( card => card.Type == CardType.Land );
-            this.Battlefield.Play( this.Hand.Play( landToPlay ) );
+            this.Battlefield.PlayLand( this.Hand.Play( landToPlay ) );
         }
 
         public void DrawCards(int number)

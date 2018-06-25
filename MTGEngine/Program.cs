@@ -8,6 +8,10 @@ namespace MTGEngine
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.WriteLine();
+
+            var gm = new GameManager();
+            gm.StartGame();
         }
     }
 }

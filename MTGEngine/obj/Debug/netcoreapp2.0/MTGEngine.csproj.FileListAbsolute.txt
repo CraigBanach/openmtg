@@ -6,3 +6,14 @@ E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.csprojResolveAssemb
 E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.csproj.CoreCompileInputs.cache
 E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.AssemblyInfoInputs.cache
 E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.AssemblyInfo.cs
+D:\dev\OpenMTG\openmtg\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.csprojResolveAssemblyReference.cache
+D:\dev\OpenMTG\openmtg\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.csproj.CoreCompileInputs.cache
+D:\dev\OpenMTG\openmtg\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.AssemblyInfoInputs.cache
+D:\dev\OpenMTG\openmtg\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.AssemblyInfo.cs
+D:\dev\OpenMTG\openmtg\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.deps.json
+D:\dev\OpenMTG\openmtg\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.runtimeconfig.json
+D:\dev\OpenMTG\openmtg\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.runtimeconfig.dev.json
+D:\dev\OpenMTG\openmtg\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.dll
+D:\dev\OpenMTG\openmtg\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.pdb
+D:\dev\OpenMTG\openmtg\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.dll
+D:\dev\OpenMTG\openmtg\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.pdb

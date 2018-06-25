@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using MTGEngine.Cards;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace MTGEngine.Zones
 {
@@ -18,6 +21,17 @@ namespace MTGEngine.Zones
         public void Play(Card card)
         {
             this.Cards.Add( card );
+            var cost = card.ManaCost.Total();
+            var landsToTap = this.Cards.Where(land => land.Type == CardType.Land).Take(cost);
+            foreach(var land in landsToTap)
+            {
+                land.Tap();
+            }
+        }
+
+        internal void PlayLand(Card card)
+        {
+            this.Cards.Add(card);
         }
     }
 }
