@@ -9,20 +9,17 @@ namespace MTGEngine
         private Player player;
         private IList<IPhase> Phases = new List<IPhase>();
         private IPhase currentPhase;
-        private IState state;
         private bool turnEnded = false;
 
         public Turn(Player player)
         {
-            this.state = player.state;
-
             this.player = player;
 
-            this.state.CurrentPlayer = this.player;
+            State.GetInstance.CurrentPlayer = this.player;
 
-            this.Phases.Add( new BeginningPhase(this.state, this.player) );
+            this.Phases.Add( new BeginningPhase(this.player) );
             this.Phases.Add( new MainPhase(this.player) );
-            this.Phases.Add( new CombatPhase(this.player, this.state) );
+            this.Phases.Add( new CombatPhase(this.player) );
             this.Phases.Add( new MainPhase(this.player) );
             this.Phases.Add( new EndingPhase(this.player) );
 
@@ -49,7 +46,7 @@ namespace MTGEngine
             if ( currentPhaseNum == this.Phases.Count - 1 )
             {
                 this.turnEnded = true;
-                if (this.state.Me().HitPoints < 1 || this.state.Opponent().HitPoints < 1)
+                if (State.GetInstance.Me().HitPoints < 1 || State.GetInstance.Opponent().HitPoints < 1)
                 {
                     Console.WriteLine("Game is over.");
                     Console.ReadLine();

@@ -2,12 +2,10 @@
 {
     public class BeginningPhase : IPhase
     {
-        private IState state;
         private Player currentPlayer;
 
-        public BeginningPhase(IState state, Player currentPlayer)
+        public BeginningPhase(Player currentPlayer)
         {
-            this.state = state;
             this.currentPlayer = currentPlayer;
         }
 

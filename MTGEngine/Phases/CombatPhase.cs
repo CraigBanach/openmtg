@@ -6,12 +6,10 @@ namespace MTGEngine.Phases
     public class CombatPhase : IPhase
     {
         private Player currentPlayer;
-        private IState state;
 
-        public CombatPhase(Player currentPlayer, IState state)
+        public CombatPhase(Player currentPlayer)
         {
             this.currentPlayer = currentPlayer;
-            this.state = state;
         }
 
         public void Begin()
@@ -25,7 +23,7 @@ namespace MTGEngine.Phases
             foreach (var creature in creatures ?? Enumerable.Empty<Card>())
             {
                 creature.Attack();
-                this.state.Opponent().Damage(creature.Power);
+                State.GetInstance.Opponent().Damage(creature.Power);
             }
         }
     }

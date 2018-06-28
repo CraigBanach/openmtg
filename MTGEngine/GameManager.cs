@@ -1,6 +1,8 @@
 ﻿using MTGEngine.Cards;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace MTGEngine
@@ -10,46 +12,48 @@ namespace MTGEngine
         private IEnumerable<Game> games;
         private Game currentGame;
         private Random random = new Random();
+        private ICollection<Player> players = new Collection<Player>();
         
         public void StartGame()
         {
-            var deck = new List<Card>();
-            for (var i = 0; i < 30; i++)
+            Collection<IEnumerable<Card>> decks = new Collection<IEnumerable<Card>>();
+
+            for ( var i = 0; i < 2; i++ )
             {
-                deck.Add(new Mountain());
-                deck.Add(new LavaSpike(manaCost: new ManaCost { Red = 1 }));
+                var deck = new List<Card>();
+                for ( var j = 0; j < 30; j++ )
+                {
+                    deck.Add( new Mountain() );
+                    deck.Add( new LavaSpike( manaCost: new ManaCost { Red = 1 } ) );
+                }
+                decks.Add( deck );
             }
-            var shuffled = deck.OrderBy(item => this.random.Next());
+            
+            this.players.Add(new Player(decks[0], "Red"));
+            this.players.Add(new Player(decks[1], "Green"));
 
-            var deck1 = new Deck(shuffled);
-
-            var deck2 = new List<Card>();
-            for (var i = 0; i < 30; i++)
+            do
             {
-                deck2.Add(new Forest());
-                deck2.Add(new GrizzlyBear(manaCost: new ManaCost { Green = 1, Any = 1 }));
-            }
-            var shuffled2 = deck2.OrderBy(item => this.random.Next());
+                foreach ( var player in this.players )
+                {
+                    player.Reset();
+                }
 
-            var deck3 = new Deck(shuffled2);
+                State.GetInstance.AddPlayers( this.players );
 
-            var state = new State();
+                this.currentGame = new Game( this.players );
 
-            var player1 = new Player(deck1, state, "Red");
-            var player2 = new Player(deck3, state, "Green");
+                while ( !this.currentGame.gameIsOver )
+                {
+                    this.MoveToNextTurn();
+                    this.BeginTurn();
+                }
+            } while ( !this.MatchIsOver() );
+        }
 
-            state.AddPlayers(new System.Collections.ObjectModel.Collection<Player>()
-            {
-                player1, player2
-            });
-
-            this.currentGame = new Game(player1, player2);
-
-            while ( !this.currentGame.gameIsOver )
-            {
-                this.MoveToNextTurn();
-                this.BeginTurn();
-            }
+        private bool MatchIsOver()
+        {
+            return this.players.Any( player => player.wins > 1 );
         }
 
         private void MoveToNextTurn()

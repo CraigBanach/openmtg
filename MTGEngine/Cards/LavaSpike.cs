@@ -15,10 +15,10 @@
         {
         }
 
-        public override void Resolve(IState state)
+        public override void Resolve()
         {
-            state.Opponent().Damage(3);
-            state.Me().Graveyard.Add(this);
+            State.GetInstance.Opponent().Damage(3);
+            State.GetInstance.Me().Graveyard.Add(this);
         }
     }
 }

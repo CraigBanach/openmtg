@@ -2,9 +2,9 @@
 
 namespace MTGEngine
 {
-    public class Deck : Stack<Card>
+    public class Library : Stack<Card>
     {
-        public Deck(IEnumerable<Card> cards)
+        public Library(IEnumerable<Card> cards)
             : base(cards)
         {
         }

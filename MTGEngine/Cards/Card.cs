@@ -24,7 +24,7 @@ namespace MTGEngine
             this.Power = power;
         }
 
-        public abstract void Resolve(IState state);
+        public abstract void Resolve();
 
         public void Untap()
         {

@@ -17,3 +17,6 @@ D:\dev\OpenMTG\openmtg\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.dll
 D:\dev\OpenMTG\openmtg\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.pdb
 D:\dev\OpenMTG\openmtg\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.dll
 D:\dev\OpenMTG\openmtg\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.pdb
+E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.dll
+E:\dev\MTGEngine\MTGEngine\obj\Debug\netcoreapp2.0\MTGEngine.pdb
+E:\dev\MTGEngine\MTGEngine\bin\Debug\netcoreapp2.0\MTGEngine.pdb

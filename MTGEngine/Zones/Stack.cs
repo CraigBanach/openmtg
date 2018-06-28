@@ -4,15 +4,9 @@ namespace MTGEngine.Zones
 {
     public class Stack : Stack<Card>
     {
-        private IState state;
 
         public Stack()
         {
-        }
-
-        public Stack(IState state)
-        {
-            this.state = state;
         }
 
         public void Cast(Card card)
@@ -23,7 +17,7 @@ namespace MTGEngine.Zones
 
         public void Resolve()
         {
-            this.Pop().Resolve(state);
+            this.Pop().Resolve();
         }
     }
 }

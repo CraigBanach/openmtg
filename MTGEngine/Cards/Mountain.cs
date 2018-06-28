@@ -15,7 +15,7 @@
         {
         }
 
-        public override void Resolve(IState state)
+        public override void Resolve()
         {
             throw new System.NotImplementedException();
         }

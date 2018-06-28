@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MTGEngine
 {
@@ -6,15 +7,10 @@ namespace MTGEngine
     {
         private TurnOrder turnOrder;
         private Turn currentTurn;
-        private IState state;
         public bool gameIsOver = false;
 
-        public Game( Player player1, Player player2 )
-        {
-            var players = new Collection<Player>{
-                player1,
-                player2
-            };
+        public Game( ICollection<Player> players )
+        { 
             this.turnOrder = new TurnOrder( players );
         }
 

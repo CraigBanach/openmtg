@@ -3,31 +3,44 @@ using MTGEngine.Zones;
 using System.Collections.ObjectModel;
 using System.Linq;
 using MTGEngine.Cards;
+using System.Collections.Generic;
 
 namespace MTGEngine
 {
     public class Player
     {
         public Battlefield Battlefield { get; set; } = new Battlefield();
-        public Deck Deck { get; set; }
+        public IEnumerable<Card> Deck { get; set; }
+        public Library Library { get; set; }
         public Hand Hand { get; set; }
         public Graveyard Graveyard { get; set; }
         private Random random = new Random();
         public int HitPoints { get; private set; } = 20;
         private bool hasPlayedLand = false;
-        public IState state;
         public string Name;
+        public int wins;
 
-        public Player(Deck deck, IState state, string Name)
+        public Player(IEnumerable<Card> deck, string Name)
         {
             this.Deck = deck;
-            this.Hand = new Hand();
-            this.Graveyard = new Graveyard();
-            this.DrawCards(7);
-            this.state = state;
             this.Name = Name;
+            this.Reset();
         }
 
+        public void CreateLibrary()
+        {
+            this.Library = new Library( 
+                this.Deck.OrderBy( item => this.random.Next() ) );
+        }
+
+        public void Reset()
+        {
+            this.CreateLibrary();
+            this.Hand = new Hand();
+            this.Graveyard = new Graveyard();
+            this.DrawCards( 7 );
+        }
+        
         public void Untap()
         {
             this.Battlefield.Untap();
@@ -51,7 +64,7 @@ namespace MTGEngine
         public void Damage(int damage)
         {
             this.HitPoints -= damage;
-            Console.WriteLine($"{this.state.Me().Name} did { damage } to {this.Name}.");
+            Console.WriteLine($"{State.GetInstance.Me().Name} did { damage } to {this.Name}.");
         }
 
         private void PlaySpell( Collection<Card> playableCards )
@@ -69,7 +82,7 @@ namespace MTGEngine
 
         public void Cast(Card card)
         {
-            card.Resolve(this.state);
+            card.Resolve();
         }
 
         private Collection<Card> PlayableSpells()
@@ -109,7 +122,7 @@ namespace MTGEngine
         {
             for ( var i = 1; i <= number; i++ )
             {
-                this.Hand.AddCard(this.Deck.Draw());
+                this.Hand.AddCard(this.Library.Draw());
             }
         }
     }

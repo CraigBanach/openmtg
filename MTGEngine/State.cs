@@ -1,35 +1,39 @@
-﻿using MTGEngine.Zones;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace MTGEngine
 {
-    public class State : IState
+    public class State
     {
-        public Dictionary<Player, Battlefield> Battlefields;
         private IEnumerable<Player> players;
         public Player CurrentPlayer { private get; set; }
+        private static State state;
 
-        public State()
+        public static State GetInstance
         {
-
+            get
+            {
+                if (state == null)
+                {
+                    state = new State();
+                }
+                return state;
+            }
         }
 
-        public void AddPlayers(Collection<Player> players)
+        private State()
+        {
+        }
+
+        public void ResetState()
+        {
+            state = null;
+        }
+
+        public void AddPlayers(ICollection<Player> players)
         {
             this.players = players;
-
-            this.Battlefields = new Dictionary<Player, Battlefield>
-            {
-                { players[0], new Battlefield() },
-                { players[1], new Battlefield() }
-            };
-        }
-
-        public Battlefield Battlefield(Player player)
-        {
-            return this.Battlefields[ player ];
         }
 
         public Player Opponent()
