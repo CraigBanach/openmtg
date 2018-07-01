@@ -23,6 +23,15 @@ namespace MTGEngine
         public void StartTurn()
         {
             this.currentTurn.Begin();
+            if ( State.GetInstance.Me().HitPoints < 1 )
+            {
+                this.gameIsOver = true;
+                State.GetInstance.Me().wins++;
+            } else if (State.GetInstance.Opponent().HitPoints < 1)
+            {
+                this.gameIsOver = true;
+                State.GetInstance.Opponent().wins++;
+            }
         }
     }
 }

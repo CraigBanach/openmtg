@@ -48,8 +48,8 @@ namespace MTGEngine
                 this.turnEnded = true;
                 if (State.GetInstance.Me().HitPoints < 1 || State.GetInstance.Opponent().HitPoints < 1)
                 {
-                    Console.WriteLine("Game is over.");
-                    Console.ReadLine();
+                    //Console.WriteLine("Game is over.");
+                    //Console.ReadLine();
                 }
             } else
             {

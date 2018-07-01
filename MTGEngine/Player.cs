@@ -39,6 +39,7 @@ namespace MTGEngine
             this.Hand = new Hand();
             this.Graveyard = new Graveyard();
             this.DrawCards( 7 );
+            this.HitPoints = 20;
         }
         
         public void Untap()
@@ -64,7 +65,7 @@ namespace MTGEngine
         public void Damage(int damage)
         {
             this.HitPoints -= damage;
-            Console.WriteLine($"{State.GetInstance.Me().Name} did { damage } to {this.Name}.");
+            //Console.WriteLine($"{State.GetInstance.Me().Name} did { damage } to {this.Name}.");
         }
 
         private void PlaySpell( Collection<Card> playableCards )
