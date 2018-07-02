@@ -6,8 +6,8 @@ namespace MTGEngine
 {
     public class State
     {
-        private IEnumerable<Player> players;
-        public Player CurrentPlayer { private get; set; }
+        private IEnumerable<IPlayer> players;
+        public IPlayer CurrentPlayer { private get; set; }
         private static State state;
 
         public static State GetInstance
@@ -31,17 +31,17 @@ namespace MTGEngine
             state = null;
         }
 
-        public void AddPlayers(ICollection<Player> players)
+        public void AddPlayers(ICollection<IPlayer> players)
         {
             this.players = players;
         }
 
-        public Player Opponent()
+        public IPlayer Opponent()
         {
             return this.players.First(player => player != this.CurrentPlayer);
         }
 
-        public Player Me()
+        public IPlayer Me()
         {
             return this.CurrentPlayer;
         }

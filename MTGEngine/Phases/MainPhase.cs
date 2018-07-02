@@ -2,9 +2,9 @@
 {
     public class MainPhase : IPhase
     {
-        private Player currentPlayer;
+        private IPlayer currentPlayer;
 
-        public MainPhase(Player currentPlayer)
+        public MainPhase(IPlayer currentPlayer)
         {
             this.currentPlayer = currentPlayer;
         }

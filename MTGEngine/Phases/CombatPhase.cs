@@ -5,9 +5,9 @@ namespace MTGEngine.Phases
 {
     public class CombatPhase : IPhase
     {
-        private Player currentPlayer;
+        private IPlayer currentPlayer;
 
-        public CombatPhase(Player currentPlayer)
+        public CombatPhase(IPlayer currentPlayer)
         {
             this.currentPlayer = currentPlayer;
         }

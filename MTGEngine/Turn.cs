@@ -6,12 +6,12 @@ namespace MTGEngine
 {
     public class Turn
     {
-        private Player player;
+        private IPlayer player;
         private IList<IPhase> Phases = new List<IPhase>();
         private IPhase currentPhase;
         private bool turnEnded = false;
 
-        public Turn(Player player)
+        public Turn(IPlayer player)
         {
             this.player = player;
 

@@ -5,15 +5,15 @@ namespace MTGEngine
 {
     public class TurnOrder
     {
-        private IList<Player> playerOrder;
+        private IList<IPlayer> playerOrder;
         private int listCounter = 0;
 
-        public TurnOrder( IEnumerable<Player> players )
+        public TurnOrder( IEnumerable<IPlayer> players )
         {
             this.playerOrder = players.ToList();
         }
 
-        public Player NextPlayer()
+        public IPlayer NextPlayer()
         {
             var player = this.playerOrder[ this.listCounter ];
             this.listCounter = this.listCounter >= this.playerOrder.Count - 1

@@ -2,9 +2,9 @@
 {
     public class BeginningPhase : IPhase
     {
-        private Player currentPlayer;
+        private IPlayer currentPlayer;
 
-        public BeginningPhase(Player currentPlayer)
+        public BeginningPhase(IPlayer currentPlayer)
         {
             this.currentPlayer = currentPlayer;
         }

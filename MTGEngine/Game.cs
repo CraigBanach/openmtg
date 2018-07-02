@@ -9,7 +9,7 @@ namespace MTGEngine
         private Turn currentTurn;
         public bool gameIsOver = false;
 
-        public Game( ICollection<Player> players )
+        public Game( ICollection<IPlayer> players )
         { 
             this.turnOrder = new TurnOrder( players );
         }
@@ -26,11 +26,11 @@ namespace MTGEngine
             if ( State.GetInstance.Me().HitPoints < 1 )
             {
                 this.gameIsOver = true;
-                State.GetInstance.Me().wins++;
+                State.GetInstance.Me().Wins++;
             } else if (State.GetInstance.Opponent().HitPoints < 1)
             {
                 this.gameIsOver = true;
-                State.GetInstance.Opponent().wins++;
+                State.GetInstance.Opponent().Wins++;
             }
         }
     }

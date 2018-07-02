@@ -7,11 +7,12 @@ namespace MTGEngine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine();
+            for (var i = 0; i < 100; i++)
+            {
+                var gm = new GameManager();
+                gm.StartGame();
 
-            var gm = new GameManager();
-            gm.StartGame();
+            }
         }
     }
 }

@@ -2,9 +2,9 @@
 {
     public class EndingPhase : IPhase
     {
-        private Player currentPlayer;
+        private IPlayer currentPlayer;
 
-        public EndingPhase(Player currentPlayer)
+        public EndingPhase(IPlayer currentPlayer)
         {
             this.currentPlayer = currentPlayer;
         }

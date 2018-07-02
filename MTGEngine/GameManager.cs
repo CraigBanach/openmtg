@@ -10,10 +10,10 @@ namespace MTGEngine
 {
     public class GameManager
     {
-        private IEnumerable<Game> games;
+        //private IEnumerable<Game> games;
         private Game currentGame;
         private Random random = new Random();
-        private ICollection<Player> players = new Collection<Player>();
+        private ICollection<IPlayer> players = new Collection<IPlayer>();
         
         public void StartGame()
         {
@@ -30,16 +30,18 @@ namespace MTGEngine
                 decks.Add( deck );
             }
             
-            this.players.Add(new Player(decks[0], "Red"));
-            this.players.Add(new Player(decks[1], "Green"));
 
-            SqliteConnection dbConnection = new SqliteConnection( @"Data Source=E:\dev\MTGEngine\db\openmtg.db;" );
-            dbConnection.Open();
 
-            for ( var i = 0; i < 10000; i++ )
+            //SqliteConnection dbConnection = new SqliteConnection( @"Data Source=|DataDirectory|\..\..\..\..\db\openmtg.db;" );
+            //dbConnection.Open();
+
+            for ( var i = 0; i < 1000; i++ )
             {
                 do
                 {
+                    this.players.Add(new AIV1(decks[0], "Red"));
+                    this.players.Add(new AIV1(decks[1], "Green"));
+
                     foreach ( var player in this.players )
                     {
                         player.Reset();
@@ -58,14 +60,14 @@ namespace MTGEngine
 
                 var winningPlayer = this.players.First( player => player.HitPoints > 0 );
 
-                SqliteCommand command = new SqliteCommand( $"INSERT INTO wins (deck) values ('{winningPlayer.Name}');", dbConnection );
-                command.ExecuteNonQuery();
+                //SqliteCommand command = new SqliteCommand( $"INSERT INTO wins (deck) values ('{winningPlayer.Name}');", dbConnection );
+                //command.ExecuteNonQuery();
                 if ( i % 100 == 0 )
                 {
                     Console.WriteLine( $"Run {i} games" );
                 }
             }
-            dbConnection.Close();
+            //dbConnection.Close();
 
             Console.WriteLine( "Inserted 10000 entries" );
             Console.ReadLine();
@@ -73,7 +75,7 @@ namespace MTGEngine
 
         private bool MatchIsOver()
         {
-            return this.players.Any( player => player.wins > 1 );
+            return this.players.Any( player => player.Wins > 1 );
         }
 
         private void MoveToNextTurn()

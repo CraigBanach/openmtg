@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace MTGEngine
 {
-    public class Player
+    public class AIV1 : IPlayer
     {
         public Battlefield Battlefield { get; set; } = new Battlefield();
         public IEnumerable<Card> Deck { get; set; }
@@ -17,10 +17,10 @@ namespace MTGEngine
         private Random random = new Random();
         public int HitPoints { get; private set; } = 20;
         private bool hasPlayedLand = false;
-        public string Name;
-        public int wins;
+        public string Name { get; set; }
+        public int Wins { get; set; }
 
-        public Player(IEnumerable<Card> deck, string Name)
+        public AIV1(IEnumerable<Card> deck, string Name)
         {
             this.Deck = deck;
             this.Name = Name;
